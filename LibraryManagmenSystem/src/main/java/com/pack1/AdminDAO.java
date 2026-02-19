@@ -29,7 +29,7 @@ public class AdminDAO {
 	String AdminName=null;
 		try {
 			Connection con =DBConnect.getConnect();
-			PreparedStatement ps = con.prepareStatement("select fname,lname form admin where name=? and pass=?");
+			PreparedStatement ps = con.prepareStatement("select fname,lname from admin where name=? and pass=?");
 			ps.setString(1, name);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();

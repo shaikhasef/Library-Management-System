@@ -21,11 +21,11 @@ public class RegisterServlet extends HttpServlet{
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
 		if(new AdminDAO().register(ab)) {
-			pw.println("<script> alert(\"Registered Successfully..\");</script>");
+			pw.println("<p style='color:green;'>Registered Successfully..</p>");
 			
 			req.getRequestDispatcher("index.html").include(req, res);
 		}else {
-			pw.println("<script> alert(\"Registration Faild !!!\");</script>");
+			pw.println("<p style='color:red;'> Registration Faild </p>");
 			
 			req.getRequestDispatcher("register.html").include(req, res);
 		}
