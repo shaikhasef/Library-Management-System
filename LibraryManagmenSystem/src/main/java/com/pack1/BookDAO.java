@@ -3,6 +3,7 @@ package com.pack1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BookDAO {
@@ -25,6 +26,23 @@ public class BookDAO {
 			e.printStackTrace();
 		}
 		return al;
+		
+	}
+	public int addBook(BookBean bb) {
+		int row =0;
+		try {
+		Connection con = DBConnect.getConnect();
+		PreparedStatement ps = con.prepareStatement("insert into books values(?,?,?,?)");
+		ps.setString(1, bb.getBookId());
+		ps.setString(2, bb.getBookName());
+		ps.setString(3, bb.getBookAuthor());
+		ps.setInt(4, bb.getPrice());
+		row = ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return row;
+		
 		
 	}
 

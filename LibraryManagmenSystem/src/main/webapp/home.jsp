@@ -10,12 +10,13 @@
 </head>
 <body>
 
-<%  out.println(request.getAttribute("name")+"<br><br>"); 
+<%  out.println(application.getAttribute("name")+"<br><br>"); 
  ArrayList<BookBean> al = (ArrayList<BookBean>)request.getAttribute("books");
 for(BookBean bb : al){
-	 out.println(bb.getBookId()+" "+bb.getBookName()+" "+bb.getBookAuthor()+" "+bb.getPrice()+" <button>Edit</button><button>Delete</button>");
+	 out.println(bb.getBookId()+" "+bb.getBookName()+" "+bb.getBookAuthor()+" "+bb.getPrice()+" <button>Edit</button><button>Delete</button><br><br>");
 	 
 }
+out.println("<a href='add.html'>ADD</a>");
 out.println("<button>Logout</button>");
 
 
