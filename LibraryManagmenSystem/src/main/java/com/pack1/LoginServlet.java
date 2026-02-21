@@ -16,8 +16,8 @@ public class LoginServlet extends HttpServlet{
 		if(name==null) {
 			res.setContentType("text/html");
 			PrintWriter pw = res.getWriter();
-			pw.println("<p style='color:red;'> Invalid user </p>");
-			req.getRequestDispatcher("index.html").forward(req, res);
+			pw.println("<p style='color:red;'> Invalid Username or Password </p>");
+			req.getRequestDispatcher("index.html").include(req, res);
 		}else {
 			req.getServletContext().setAttribute("name", name);
 			req.setAttribute("books", new BookDAO().getBook());
