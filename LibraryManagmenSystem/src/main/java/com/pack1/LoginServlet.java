@@ -8,11 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException {
 		String name = new AdminDAO().login(req.getParameter("name"), req.getParameter("pass"));
+		HttpSession session = req.getSession();
 		if(name==null) {
 			res.setContentType("text/html");
 			PrintWriter pw = res.getWriter();
@@ -20,7 +22,7 @@ public class LoginServlet extends HttpServlet{
 			req.getRequestDispatcher("index.html").include(req, res);
 		}else {
 			req.getServletContext().setAttribute("name", name);
-			req.setAttribute("books", new BookDAO().getBook());
+			session.setAttribute("books", new BookDAO().getBook());
 			req.getRequestDispatcher("home.jsp").forward(req, res);
 		}
 	}

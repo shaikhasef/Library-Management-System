@@ -45,5 +45,22 @@ public class BookDAO {
 		
 		
 	}
+	public int updateBook(BookBean bb) {
+		int row =0;
+		try {
+		Connection con = DBConnect.getConnect();
+		PreparedStatement ps = con.prepareStatement("update books set name=?,author=?,price=? where id=?");
+		ps.setString(1, bb.getBookName());
+		ps.setString(2, bb.getBookAuthor());
+		ps.setInt(3, bb.getPrice());
+		ps.setString(4, bb.getBookId());
+		row = ps.executeUpdate();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return row;
+		
+	}
 
 }

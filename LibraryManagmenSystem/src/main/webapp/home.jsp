@@ -117,7 +117,7 @@ tr:hover{
         </tr>
 
         <%
-        ArrayList<BookBean> al = (ArrayList<BookBean>)request.getAttribute("books");
+        ArrayList<BookBean> al = (ArrayList<BookBean>)session.getAttribute("books");
         if(al != null){
             for(BookBean bb : al){
         %>
@@ -127,8 +127,8 @@ tr:hover{
             <td><%= bb.getBookAuthor() %></td>
             <td>₹ <%= bb.getPrice() %></td>
             <td>
-                <button class="btn edit-btn">Edit</button>
-                <button class="btn delete-btn">Delete</button>
+               <a href="edit?bookid=<%= bb.getBookId()%>"> <button class="btn edit-btn" >Edit</button></a>
+                <a href="delete?bookid=<%= bb.getBookId()%>"><button class="btn delete-btn">Delete</button></a>
             </td>
         </tr>
         <%
