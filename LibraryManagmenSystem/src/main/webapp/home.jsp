@@ -94,7 +94,6 @@ tr:hover{
 
 </head>
 <body>
-
 <div class="navbar">
     <h2>Library Management - Admin Panel</h2>
     <div>

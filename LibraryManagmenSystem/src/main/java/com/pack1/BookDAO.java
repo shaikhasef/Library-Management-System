@@ -62,5 +62,18 @@ public class BookDAO {
 		return row;
 		
 	}
+	public int deleteBook(String id) {
+		try {
+			PreparedStatement ps = DBConnect.getConnect().prepareStatement("delete from books where id=?");
+			ps.setString(1, id);
+			return ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+		
+	}
 
 }

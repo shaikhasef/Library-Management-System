@@ -34,6 +34,12 @@ public class BookBean implements Serializable{
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	@Override
+	public String toString() {
+		return "BookBean [BookId=" + BookId + ", BookName=" + BookName + ", BookAuthor=" + BookAuthor + ", price="
+				+ price + "]";
+	}
+	
 	
 	
 	
